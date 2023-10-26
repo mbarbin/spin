@@ -25,7 +25,8 @@
 /* Based on http://www.ohse.de/uwe/software/resize.c.html */
 /* Inquire actual terminal size (this it what the kernel thinks - not
  * was the user on the over end of the phone line has really). */
-CAMLexport value Ansi_term_size(value vfd) {
+CAMLexport value Ansi_term_size(value vfd)
+{
   CAMLparam1(vfd);
   CAMLlocal1(vsize);
   int fd = Int_val(vfd);
@@ -38,11 +39,13 @@ CAMLexport value Ansi_term_size(value vfd) {
 #endif
 
 #ifdef TIOCGSIZE
-  if (ioctl(fd, TIOCGSIZE, &win)) failwith("Ansi.size");
+  if (ioctl(fd, TIOCGSIZE, &win))
+    caml_failwith("Ansi.size");
   x = win.ts_cols;
   y = win.ts_lines;
 #elif defined TIOCGWINSZ
-  if (ioctl(fd, TIOCGWINSZ, &win)) failwith("Ansi.size");
+  if (ioctl(fd, TIOCGWINSZ, &win))
+    caml_failwith("Ansi.size");
   x = win.ws_col;
   y = win.ws_row;
 #else

@@ -23,7 +23,7 @@
  (description "OCaml project generator")
  (depends
   (ocaml
-   (>= 4.10.0))
+   (>= 5.0))
   dune
   (alcotest :with-test)
   (js_of_ocaml :with-test)

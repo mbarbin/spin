@@ -41,7 +41,8 @@
   (fmt
    (>= 0.8.9))
   fpath
-  cmdliner
+  (cmdliner
+   (>= 1.2))
   logs))
 
 (package

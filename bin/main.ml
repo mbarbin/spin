@@ -79,11 +79,15 @@ let default_cmd =
     let+ _term = Common.term in
     run ()
   in
-  let info = Term.info "spin" ~version:"%%VERSION%%" in
+  let info = Cmd.info "spin" ~version:"%%VERSION%%" in
   term, info
 
 let main =
   ( fst default_cmd
-  , Term.info "spin" ~version:"%%VERSION%%" ~doc ~sdocs ~exits ~man ~envs )
+  , Cmd.info "spin" ~version:"%%VERSION%%" ~doc ~sdocs ~exits ~man ~envs )
 
-let () = Term.(exit_status @@ eval_choice main cmds)
+let () =
+  Cmd.group ~default:(fst main) (snd main)
+    (cmds |> List.map (fun (term, info) -> Cmd.v info term))
+  |> Cmd.eval'
+  |> Stdlib.exit

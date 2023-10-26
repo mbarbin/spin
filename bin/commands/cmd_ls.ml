@@ -46,7 +46,7 @@ let man =
        description."
   ]
 
-let info = Term.info "ls" ~doc ~sdocs ~exits ~envs ~man ~man_xrefs
+let info = Cmd.info "ls" ~doc ~sdocs ~exits ~envs ~man ~man_xrefs
 
 let term =
   let open Common.Syntax in

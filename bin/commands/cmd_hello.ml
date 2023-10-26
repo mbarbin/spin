@@ -49,7 +49,7 @@ let man =
        environment, use spin-new(1) instead."
   ]
 
-let info = Term.info "hello" ~doc ~sdocs ~exits ~envs ~man ~man_xrefs
+let info = Cmd.info "hello" ~doc ~sdocs ~exits ~envs ~man ~man_xrefs
 
 let term =
   let open Common.Syntax in
